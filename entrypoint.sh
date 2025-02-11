@@ -18,7 +18,7 @@ if [ -f "/${INPUT_RULE_SET}.guard" ]; then
   [ -n "$INPUT_RULE_SET" ] && set -- --rules "$INPUT_RULE_SET" "$@"
   [ -n "$INPUT_SHOW_SUMMARY" ] && set -- --show-summary "$INPUT_SHOW_SUMMARY" "$@"
   [ -n "$INPUT_OUTPUT_FORMAT" ] && set -- --output-format "$INPUT_OUTPUT_FORMAT" "$@"
-  set -- cfn-guard "$@"
+  set -- cfn-guard validate "$@"
 
   # execute command in place
   printf "...scanning with only guard rule set %s" "$INPUT_RULE_SET"
