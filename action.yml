@@ -16,6 +16,9 @@ inputs:
   rule_set:
     description: 'scanner used to run security test. Options are a lot, please read documentation.'
     required: true
+  options:
+    description: 'Free-form options and flags blindly passed to cfn-guard'
+    required: false
 runs:
   using: docker
   image: Dockerfile
