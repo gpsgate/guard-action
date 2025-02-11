@@ -15,7 +15,7 @@ if [ -f "/${INPUT_RULE_SET}.guard" ]; then
   # shellcheck disable=SC2086 # Intentionally pass options as-is
   [ -n "$INPUT_OPTIONS" ] && set -- $INPUT_OPTIONS
   [ -n "$INPUT_DATA_DIRECTORY" ] && set -- --data "$INPUT_DATA_DIRECTORY" "$@"
-  [ -n "$INPUT_RULE_SET" ] && set -- --rules "$INPUT_RULE_SET" "$@"
+  [ -n "$INPUT_RULE_SET" ] && set -- --rules "/${INPUT_RULE_SET}.guard" "$@"
   [ -n "$INPUT_SHOW_SUMMARY" ] && set -- --show-summary "$INPUT_SHOW_SUMMARY" "$@"
   [ -n "$INPUT_OUTPUT_FORMAT" ] && set -- --output-format "$INPUT_OUTPUT_FORMAT" "$@"
   set -- cfn-guard validate "$@"
