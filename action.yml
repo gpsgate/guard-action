@@ -19,6 +19,9 @@ inputs:
   options:
     description: 'Free-form options and flags blindly passed to cfn-guard'
     required: false
+  export:
+    description: 'Path to file where to export output'
+    required: false
 runs:
   using: docker
   image: Dockerfile

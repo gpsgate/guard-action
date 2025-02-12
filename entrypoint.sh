@@ -21,9 +21,15 @@ if [ -f "/${INPUT_RULE_SET}.guard" ]; then
   set -- cfn-guard validate "$@"
 
   # execute command in place
-  printf "...scanning with only guard rule set %s" "$INPUT_RULE_SET"
-  echo "Running: $*"
-  exec "$@"
+  printf "...scanning with only guard rule set: '%s' " "$INPUT_RULE_SET"
+  if [ -n "$INPUT_EXPORT" ]; then
+    mkdir -p "$(dirname "$INPUT_EXPORT")" || true
+    echo "Running: $*, exporting to $INPUT_EXPORT"
+    exec "$@" > "$INPUT_EXPORT"
+  else
+    echo "Running: $*"
+    exec "$@"
+  fi
 else
   echo "Environment variable RULE_SET is not set to an allowed option...Quitting." >&2
   exit 1
